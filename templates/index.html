@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Delivery Bot - Дашборд</title>
+    
+    <!-- Bootstrap CSS (темная тема Replit) -->
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    
+    <!-- Дополнительные стили -->
+    <link href="/static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">📦 Delivery Bot</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Дашборд</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stats">Статистика</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="mb-4">📊 Дашборд бота доставки</h1>
+                <p class="lead">Статистика и информация о работе Telegram-бота доставки</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Статистика бота -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0">📱 Статистика бота</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="stat-item">
+                            <span class="stat-label">👥 Пользователей:</span>
+                            <span class="stat-value" id="users-count">Загрузка...</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">📦 Доставок:</span>
+                            <span class="stat-value" id="deliveries-count">Загрузка...</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">💰 Заработано:</span>
+                            <span class="stat-value" id="earnings-count">Загрузка...</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">🔮 Активных баффов:</span>
+                            <span class="stat-value" id="buffs-count">Загрузка...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Системная информация -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="card-title mb-0">⚙️ Системная информация</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="stat-item">
+                            <span class="stat-label">🖥️ Загрузка CPU:</span>
+                            <div class="progress">
+                                <div class="progress-bar" id="cpu-usage" role="progressbar" style="width: 0%;">0%</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">🧠 Использование памяти:</span>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" id="memory-usage" role="progressbar" style="width: 0%;">0%</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">💾 Использование диска:</span>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" id="disk-usage" role="progressbar" style="width: 0%;">0%</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">⏱️ Время работы:</span>
+                            <span class="stat-value" id="uptime">Загрузка...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title mb-0">📋 Информация о проекте</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Telegram-бот для симуляции доставки посылок с возможностью:</p>
+                        <ul>
+                            <li>Доставки посылок и получения виртуальной валюты</li>
+                            <li>Таблицы лидеров</li>
+                            <li>Покупки баффов для ускорения прогресса</li>
+                            <li>Управления через админ-панель</li>
+                        </ul>
+                        <p>Бот написан на Python с использованием библиотеки pyTelegramBotAPI.</p>
+                        <p>Backend: Flask + PostgreSQL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-dark text-white py-4 mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Telegram Delivery Bot</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>Разработчик: @white_wenty</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap and utilities -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom scripts -->
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="text-center mb-4">
+    <h1><i class="fas fa-chart-line me-2"></i>Подробная статистика</h1>
+    <p class="lead">Детальная информация о работе системы доставки</p>
+</div>
+
+<div class="row mb-4">
+    <!-- System Stats -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>Статистика системы</h4>
+            </div>
+            <div class="card-body">
+                <canvas id="deliveryStatsChart" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Server Resources -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0"><i class="fas fa-server me-2"></i>Ресурсы сервера</h4>
+            </div>
+            <div class="card-body">
+                <canvas id="resourcesChart" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- System Details -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h4 class="mb-0"><i class="fas fa-cogs me-2"></i>Системная информация</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th><i class="fas fa-desktop me-2"></i>Операционная система</th>
+                            <td>{{ platform_stats.os }} {{ platform_stats.os_version }}</td>
+                        </tr>
+                        <tr>
+                            <th><i class="fas fa-fingerprint me-2"></i>Хост</th>
+                            <td>{{ platform_stats.hostname }}</td>
+                        </tr>
+                        <tr>
+                            <th><i class="fab fa-python me-2"></i>Версия Python</th>
+                            <td>{{ platform_stats.python_version }}</td>
+                        </tr>
+                        <tr>
+                            <th><i class="fas fa-clock me-2"></i>Аптайм</th>
+                            <td>{{ platform_stats.uptime }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Delivery Stats -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0"><i class="fas fa-truck me-2"></i>Детали доставки</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th><i class="fas fa-users me-2"></i>Всего пользователей</th>
+                            <td>{{ system_stats.total_users }}</td>
+                        </tr>
+                        <tr>
+                            <th><i class="fas fa-box me-2"></i>Всего доставок</th>
+                            <td>{{ system_stats.total_deliveries }}</td>
+                        </tr>
+                        <tr>
+                            <th><i class="fas fa-money-bill-wave me-2"></i>Всего заработано</th>
+                            <td>{{ system_stats.total_earnings }} рублей</td>
+                        </tr>
+                        <tr>
+                            <th><i class="fas fa-magic me-2"></i>Активных баффов</th>
+                            <td>{{ system_stats.active_buffs }}</td>
+                        </tr>
+                        {% if system_stats.total_deliveries > 0 %}
+                        <tr>
+                            <th><i class="fas fa-calculator me-2"></i>Среднее по доставке</th>
+                            <td>{{ (system_stats.total_earnings / system_stats.total_deliveries) | round(2) }} рублей</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Delivery stats chart
+var deliveryCtx = document.getElementById('deliveryStatsChart').getContext('2d');
+var deliveryChart = new Chart(deliveryCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Пользователи', 'Доставки', 'Активные баффы'],
+        datasets: [{
+            label: 'Статистика доставок',
+            data: [
+                {{ system_stats.total_users }},
+                {{ system_stats.total_deliveries }},
+                {{ system_stats.active_buffs }}
+            ],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(255, 159, 64, 0.5)'
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        responsive: true
+    }
+});
+
+// Resources chart
+var resourcesCtx = document.getElementById('resourcesChart').getContext('2d');
+var resourcesChart = new Chart(resourcesCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['CPU', 'Память', 'Диск'],
+        datasets: [{
+            data: [
+                {{ platform_stats.cpu_percent }},
+                {{ platform_stats.memory_percent }},
+                {{ platform_stats.disk_percent }}
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(46, 204, 113, 0.5)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(46, 204, 113, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom',
+            },
+            title: {
+                display: true,
+                text: 'Использование ресурсов (%)'
+            }
+        }
+    }
+});
+
+// Auto-refresh stats every 30 seconds
+setInterval(function() {
+    location.reload();
+}, 30000);
+</script>
+{% endblock %}

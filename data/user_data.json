@@ -1,0 +1,73 @@
+{
+  "_admins": {
+    "6999938953": {
+      "role": "owner",
+      "name": "@white_wenty",
+      "permissions": {
+        "block_users": true,
+        "add_money": true,
+        "remove_money": true,
+        "give_items": true,
+        "broadcast": true,
+        "view_users": true,
+        "manage_admins": true
+      }
+    }
+  },
+  "7974431818": {
+    "username": "Курьер",
+    "deliveries": 1,
+    "money": 172,
+    "last_delivery": 1745260892.6389015,
+    "buffs": []
+  },
+  "7023169726": {
+    "username": "Курьер",
+    "deliveries": 2,
+    "money": 513,
+    "last_delivery": 1745261620.0863261,
+    "buffs": []
+  },
+  "7785156483": {
+    "username": "Курьер",
+    "deliveries": 1,
+    "money": 261,
+    "last_delivery": 1745260893.8878088,
+    "buffs": []
+  },
+  "1677701867": {
+    "username": "Курьер",
+    "deliveries": 0,
+    "money": 0,
+    "last_delivery": 0,
+    "buffs": []
+  },
+  "6118594402": {
+    "username": "Курьер",
+    "deliveries": 1,
+    "money": 156,
+    "last_delivery": 1745260895.073313,
+    "buffs": []
+  },
+  "6999938953": {
+    "username": "Максимка",
+    "deliveries": 2,
+    "money": 258,
+    "last_delivery": 1745262756.548294,
+    "buffs": []
+  },
+  "1419280615": {
+    "username": "Курьер",
+    "deliveries": 0,
+    "money": 0,
+    "last_delivery": 0,
+    "buffs": []
+  },
+  "7991697168": {
+    "username": "Курьер",
+    "deliveries": 0,
+    "money": 0,
+    "last_delivery": 0,
+    "buffs": []
+  }
+}

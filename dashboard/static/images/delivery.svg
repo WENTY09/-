@@ -1,0 +1,40 @@
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#f8f9fa" />
+  
+  <!-- Delivery Truck -->
+  <g transform="translate(30, 40) scale(1.5)">
+    <!-- Truck Body -->
+    <rect x="50" y="40" width="150" height="40" fill="#ff4d4d" stroke="#000000" stroke-width="2" />
+    <!-- Truck Cabin -->
+    <rect x="20" y="45" width="30" height="35" fill="#cc0000" stroke="#000000" stroke-width="2" />
+    <!-- Wheels -->
+    <circle cx="40" cy="85" r="10" fill="#000000" />
+    <circle cx="160" cy="85" r="10" fill="#000000" />
+    <!-- Windows -->
+    <rect x="25" y="50" width="20" height="15" fill="#cceeff" stroke="#000000" stroke-width="1" />
+    <!-- Truck Details -->
+    <line x1="50" y1="40" x2="50" y2="80" stroke="#000000" stroke-width="1" />
+    <rect x="130" y="45" width="40" height="15" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="133" y="57" font-family="Arial" font-size="10" fill="#000000">DELIVERY</text>
+  </g>
+  
+  <!-- Packages -->
+  <g transform="translate(0, 0)">
+    <!-- Package 1 -->
+    <rect x="50" y="150" width="80" height="80" fill="#c87137" stroke="#8b4513" stroke-width="3" />
+    <line x1="50" y1="150" x2="130" y2="230" stroke="#8b4513" stroke-width="1" />
+    <line x1="130" y1="150" x2="50" y2="230" stroke="#8b4513" stroke-width="1" />
+    
+    <!-- Package 2 -->
+    <rect x="200" y="170" width="100" height="80" fill="#96bf48" stroke="#466321" stroke-width="3" />
+    <text x="225" y="220" font-family="Arial" font-size="16" fill="#000000">FRAGILE</text>
+    
+    <!-- Package 3 -->
+    <rect x="350" y="130" width="70" height="70" fill="#6b8cce" stroke="#2c3e50" stroke-width="3" />
+    <text x="360" y="175" font-family="Arial" font-size="12" fill="#ffffff">EXPRESS</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="180" y="270" font-family="Arial" font-size="24" font-weight="bold" fill="#333333">Доставка посылок</text>
+</svg>
